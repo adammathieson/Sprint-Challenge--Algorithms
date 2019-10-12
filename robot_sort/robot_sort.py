@@ -93,79 +93,75 @@ class SortingRobot:
         Returns True if the robot's light is on and False otherwise.
         """
         return self._light == "ON"
-    
-    # def move_to_start(self):
-    #     while self._position > 0:
-    #         self._position -= 1
-    #     self._position += 1
 
 
-    def sort_right(self):
-        while self.move_right():
-            print("Moving to---->", self._position)
-            if self.compare_item() == 1:
-                print(f'swap {self._item}')
-                self.swap_item()
-                print(f'for {self._item} at postition {self._position}')
-                time.sleep(1)
-            else:
-                next
+    # def sort_right(self):
+    #     while self.move_right():
+    #         print("Moving to---->", self._position)
+    #         if self.compare_item() == 1:
+    #             print(f'swap {self._item}')
+    #             self.swap_item()
+    #             print(f'for {self._item} at postition {self._position}')
+    #             # time.sleep(1)
+    #         else:
+    #             next
 
-            # elif self.compare_item() == None and self.move_right() == False:
-            #     return
+    #         # elif self.compare_item() == None and self.move_right() == False:
+    #         #     return
                 
-        print("<<Call sort left<<", self._list)
-        return self.sort_left()
+    #     print("<<Call sort left<<", self._list)
+    #     return self.sort_left()
 
-    def sort_left(self):
-        print(f"+++++++{self._list[self._position]}++++++++++")
-        if self._list[self._position] == None:
-            self.swap_item()
-            return
-        else:
-            while self.move_left() and self._item != None:
-                print(f"{self._position}<-----")
+    # def sort_left(self):
+    #     print(f"+++++++{self._list[self._position]}++++++++++")
+    #     if self._list[self._position] == None:
+    #         self.swap_item()
+    #         return
+    #     else:
+    #         while self.move_left() and self._item != None:
+    #             print(f"{self._position}<-----")
                 
-                if self.compare_item() == None:
-                    print(f"swap {self._item}")
-                    self.swap_item()
-                    print(f"for {self._item} at position {self._position}")
-                    break
-                # elif self.compare_item() == None and self.move_right() == False:
-                #     self.swap_item() 
-                #     return
+    #             if self.compare_item() == None:
+    #                 print(f"swap {self._item}")
+    #                 self.swap_item()
+    #                 print(f"for {self._item} at position {self._position}")
+    #                 break
+    #             # elif self.compare_item() == None and self.move_right() == False:
+    #             #     self.swap_item() 
+    #             #     return
 
-            print("--> moving right")
-            self.move_right()
-            print(f"swap {self._item}")
-            self.swap_item()
-            print(f"for {self._item} at position {self._position}")
+    #         print("--> moving right")
+    #         self.move_right()
+    #         print(f"swap {self._item}")
+    #         self.swap_item()
+    #         print(f"for {self._item} at position {self._position}")
             
-            time.sleep(1)
-                # elif self._item == None:
-                    # break
+    #         # time.sleep(1)
+    #             # elif self._item == None:
+    #                 # break
                     
-                # if self.move_right() == False:
-                #     return
-                # else:
-                #     next
+    #             # if self.move_right() == False:
+    #             #     return
+    #             # else:
+    #             #     next
             
-            print(">>Call sort right>>", self._list)
-            return self.sort_right()
+    #         print(">>Call sort right>>", self._list)
+    #         return self.sort_right()
             # return 'Sorted'
 
 # [6, 7, 1, -4, 12] # len = 5 after start [None, 7, 1, -4, 12] item is 6, sort list to the right and return
 # to 0 index and to swap for low value when finished
-    def sort(self):
+    # def sort(self):
 
-        # self.set_light_on()
-        print("START HERE")
-        self.swap_item()
-        print(f"Initial swap - (6): {self._item} ")
+    #     # self.set_light_on()
+    #     print("START HERE")
+    #     self.swap_item()
+    #     print(f"Initial swap - (6): {self._item} ")
 
-        self.sort_right()
+    #     self.sort_right()
             
-        print(f"Congratulations! Your list has been sorted: {l}")
+    #     print(f"Congratulations! Your list has been sorted: {self._list}")
+    #     return self._list
             
         # if self.move_right():
         #     self.sort_right()
@@ -241,8 +237,34 @@ class SortingRobot:
         # # self.swap_item()
 
         # return "List is sorted"
+
+
+    def sort_right(self):
+        while self.move_right():
+            if self.compare_item() == 1:
+                self.swap_item()
+
+        return self.sort_left()
+
+    def sort_left(self):
+        if self._list[self._position] == None:
+            self.swap_item()
+            return
+        else:
+            while self.move_left() and self._item != None:
+                if self.compare_item() == None:
+                    self.swap_item()
+                    break
+            self.move_right()
+            self.swap_item()
+            return self.sort_right()
+
+    def sort(self):
+        self.swap_item()
+        self.sort_right()
             
-            
+        # print(f"Congratulations! Your list has been sorted: {self._list}")
+        return self._list       
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
