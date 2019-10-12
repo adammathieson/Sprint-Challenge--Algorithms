@@ -2,10 +2,10 @@
 
 ## Exercise I
 
-a) O(n**)  The total time will increase at a greater rate than the size n.
+a) O(n)  The total time will increase at a greater rate than the size n.
 
 
-b) O(n**)  The total time will increase at an even greater rate than the size of n.
+b) O(n log n)  The total time will increase at an even greater rate than the size of n.
 
 
 c) O(n) - Linear-  The time will depend on the size of n 

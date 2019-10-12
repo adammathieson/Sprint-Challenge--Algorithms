@@ -4,16 +4,15 @@ Your function should return a count of how many occurences of ***"th"*** occur w
 Your function must utilize recursion. It cannot contain any loops.
 '''
 
-cache = []
 def count_th(word):
     if len(word) < 2:
-        return
+        return 0
     elif word[0:2] == 'th':
-        cache.append(word[0:2])
-    split_word = word[1:]
-    count_th(split_word)
+        return 1 + count_th(word[2:])
+    else: 
+        split_word = word[1:]
+        return count_th(split_word)
 
-    return len(cache)
 
 # print(count_th('')) #None
 # print(count_th('abcthxyz')) #1
